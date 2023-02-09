@@ -1,4 +1,6 @@
 import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
+import { TestCommandHandler } from "../commandHandlers/testCommandHandler"
+import { WhereCommandHandler } from "../commandHandlers/whereCommandHandler";
 import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import config from "./config";
 
@@ -15,4 +17,11 @@ export const bot = new ConversationBot({
   notification: {
     enabled: true,
   },
+  command: {
+    enabled: true,
+    commands: [
+      new TestCommandHandler(),
+      new WhereCommandHandler()
+    ]
+  }
 });

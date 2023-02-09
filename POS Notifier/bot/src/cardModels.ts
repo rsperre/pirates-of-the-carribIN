@@ -4,7 +4,7 @@
  */
 export interface CardData {
   title: string;
-  appName: string;
+  appName?: string;
   description: string;
-  notificationUrl: string;
+  notificationUrl?: string;
 }

@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
-    "version": "1.0.1",
+    "version": "1.0.5",
     "id": "{{state.fx-resource-appstudio.teamsAppId}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
@@ -30,6 +30,29 @@
                 "personal",
                 "team",
                 "groupchat"
+            ],
+            "commandLists": [
+                {
+                    "scopes": [
+                        "team",
+                        "groupchat",
+                        "personal"
+                    ],
+                    "commands": [
+                        {
+                         "title": "test!",
+                         "description": "Some test command"
+                        },
+                        {
+                            "title": "remove",
+                            "description": "Remove last output"
+                        },
+                        {
+                            "title": "where",
+                            "description": "Expand information"
+                        }
+                    ]
+                }
             ],
             "supportsFiles": false,
             "isNotificationOnly": false

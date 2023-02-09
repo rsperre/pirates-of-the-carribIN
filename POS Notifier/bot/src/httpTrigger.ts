@@ -24,10 +24,10 @@ const httpTrigger: AzureFunction = async function (
   for (const target of await bot.notification.installations()) {
     await target.sendAdaptiveCard(
       AdaptiveCards.declare<CardData>(notificationTemplate).render({
-        title: "New Event Occurred!",
-        appName: "Contoso App Notification",
-        description: `This is a sample http-triggered notification to ${target.type}`,
-        notificationUrl: "https://www.adaptivecards.io/",
+        title: "Possible pirate activity!",
+        appName: "P.o.S Notification",
+        description: `More details to follow in this ${target.type}. Info: ${req?.rawBody}`,
+        notificationUrl: "https://maps.google.com/",
       })
     );
 
