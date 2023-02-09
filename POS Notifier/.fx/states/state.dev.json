@@ -1,0 +1,32 @@
+{
+    "solution": {
+        "provisionSucceeded": true,
+        "teamsAppTenantId": "fbe89767-8e52-4b6a-9862-94743fdddce5",
+        "subscriptionId": "83515a7b-618a-40b7-9c46-d7c152e5aae9",
+        "subscriptionName": "Azure subscription 1",
+        "tenantId": "fbe89767-8e52-4b6a-9862-94743fdddce5",
+        "needCreateResourceGroup": false,
+        "resourceGroupName": "acdc-rg01-teams-app",
+        "location": "northeurope",
+        "resourceNameSuffix": "b4c9fe"
+    },
+    "fx-resource-appstudio": {
+        "tenantId": "fbe89767-8e52-4b6a-9862-94743fdddce5",
+        "teamsAppId": "67308747-844d-48d7-9011-6504e9976cf6"
+    },
+    "fx-resource-bot": {
+        "botId": "518fd2e1-1c6f-4529-b2fb-b309e07c520a",
+        "botPassword": "{{fx-resource-bot.botPassword}}",
+        "sku": "B1",
+        "appName": "posnotifiedc1579bot",
+        "domain": "posnotifiedc1579bot.azurewebsites.net",
+        "appServicePlanName": "posnotifiedc1579bot",
+        "functionAppResourceId": "/subscriptions/83515a7b-618a-40b7-9c46-d7c152e5aae9/resourceGroups/acdc-rg01-teams-app/providers/Microsoft.Web/sites/posnotifiedc1579bot",
+        "functionEndpoint": "https://posnotifiedc1579bot.azurewebsites.net"
+    },
+    "fx-resource-identity": {
+        "identityName": "posnotifiedc1579",
+        "identityResourceId": "/subscriptions/83515a7b-618a-40b7-9c46-d7c152e5aae9/resourceGroups/acdc-rg01-teams-app/providers/Microsoft.ManagedIdentity/userAssignedIdentities/posnotifiedc1579",
+        "identityClientId": "a8a0c061-18ae-4a25-845b-160a6d9b0629"
+    }
+}
