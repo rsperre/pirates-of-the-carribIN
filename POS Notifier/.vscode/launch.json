@@ -5,8 +5,11 @@
             "name": "Launch firefox",
             "type": "firefox",
             "request": "launch",
+            "firefoxExecutable": "c:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "keepProfileChanges": true,
+            "profile": "acdc",
             "reAttach": true,
-            "url": "https://teams.microsoft.com/l/app/${teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}"
+            "url": "https://teams.microsoft.com/l/app/4bd5a2d3-ef26-4a2b-b26a-74f6b73f6080?installAppPackage=true&webjoin=true&${account-hint}"
         },
         {
             "name": "Launch Remote (Edge)",
@@ -61,8 +64,9 @@
         {
             "name": "Launch Bot (Firefox)",
             "type": "firefox",
+            "profile": "acdc",
             "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
+            "url": "https://teams.microsoft.com/l/app/4bd5a2d3-ef26-4a2b-b26a-74f6b73f6080?installAppPackage=true&webjoin=true&${account-hint}",
             "cascadeTerminateToConfigurations": [
                 "Attach to Bot"
             ],

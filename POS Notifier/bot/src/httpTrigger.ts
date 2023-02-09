@@ -15,18 +15,29 @@ import { bot } from "./internal/initialize";
 //
 // You can add authentication / authorization for this API. Refer to
 // https://aka.ms/teamsfx-notification for more details.
+const emojiarr = ['😀', '😑', '🤣', '😫', '😎'];
+
+
 const httpTrigger: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
+  
   // By default this function will iterate all the installation points and send an Adaptive Card
   // to every installation.
   for (const target of await bot.notification.installations()) {
+    const msgBody = req?.rawBody ? `Info: ${req?.rawBody}` : undefined;
+    const emoji = emojiarr[Math.floor(Math.random() * emojiarr.length)];
+    const description = target.type === 'Channel' ? 
+      `More details to follow in this ${target.type}. ${msgBody}` : 
+      `Hey. There be pirates.... ${emoji} ${req?.rawBody}`
+
+    
     await target.sendAdaptiveCard(
       AdaptiveCards.declare<CardData>(notificationTemplate).render({
         title: "Possible pirate activity!",
         appName: "P.o.S Notification",
-        description: `More details to follow in this ${target.type}. Info: ${req?.rawBody}`,
+        description: description,
         notificationUrl: "https://maps.google.com/",
       })
     );
