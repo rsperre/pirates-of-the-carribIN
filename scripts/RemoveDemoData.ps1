@@ -2,6 +2,7 @@
 
 C:\Dev\scripts\connectacdc.ps1
 
+Write-Host "Checking if team should be deleted"
 $team = Get-PnPTeamsTeam | Where-Object DisplayName -eq "POS Team Demo"
 
 if ($null -ne $team) {
@@ -16,6 +17,9 @@ if ($null -ne $team) {
         Write-Host "." -NoNewline
         $team = Get-PnPTeamsTeam | Where-Object DisplayName -eq "POS Team Demo"
     }
+}
+else {
+    Write-Host "Team doesn't exist, creating...."
 }
 
 #check if we can reuse an existing M365 group
