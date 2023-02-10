@@ -1,8 +1,10 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import { POST } from "botbuilder/lib/streaming";
 import notificationTemplate from "./adaptiveCards/notification-default.json";
 import { CardData } from "./cardModels";
 import { bot } from "./internal/initialize";
+import fetch from 'node-fetch'
 
 // An Azure Function HTTP trigger.
 //
@@ -17,12 +19,15 @@ import { bot } from "./internal/initialize";
 // https://aka.ms/teamsfx-notification for more details.
 const emojiarr = ['😀', '😑', '🤣', '😫', '😎'];
 
-
 const httpTrigger: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
-  
+
+  //const alertObject = {'alert': {'alerttype': 'alert'}};
+  const alertObject = 'ALERT';
+  await fetch(process.env.HUEURL, {method: POST, body: alertObject });
+
   // By default this function will iterate all the installation points and send an Adaptive Card
   // to every installation.
   for (const target of await bot.notification.installations()) {
@@ -31,9 +36,8 @@ const httpTrigger: AzureFunction = async function (
     const description = target.type === 'Channel' ? 
       `More details to follow in this ${target.type}. ${msgBody}` : 
       `Hey. There be pirates.... ${emoji} ${req?.rawBody}`
-
     
-    await target.sendAdaptiveCard(
+    const message = await target.sendAdaptiveCard(
       AdaptiveCards.declare<CardData>(notificationTemplate).render({
         title: "Possible pirate activity!",
         appName: "P.o.S Notification",
@@ -42,6 +46,7 @@ const httpTrigger: AzureFunction = async function (
       })
     );
 
+    await target.sendMessage(`[${message.id}]`);
     // Note - you can filter the installations if you don't want to send the event to every installation.
 
     /** For example, if the current target is a "Group" this means that the notification application is

@@ -4,6 +4,7 @@ import { WhereCommandHandler } from "../commandHandlers/whereCommandHandler";
 import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import config from "./config";
 import { DeleteCommandHandler } from "../commandHandlers/deleteCommandHandler";
+import { ClearCommandHandler } from "../commandHandlers/clearCommandHandler";
 
 // Create bot.
 export const bot = new ConversationBot({
@@ -23,7 +24,8 @@ export const bot = new ConversationBot({
     commands: [
       new TestCommandHandler(),
       new WhereCommandHandler(),
-      new DeleteCommandHandler()
+      new DeleteCommandHandler(),
+      new ClearCommandHandler()
     ]
   }
 });
