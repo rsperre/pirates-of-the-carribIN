@@ -42,7 +42,7 @@ const httpTrigger: AzureFunction = async function (
         title: "Possible pirate activity!",
         appName: "P.o.S Notification",
         description: description,
-        notificationUrl: "https://maps.google.com/",
+        notificationUrl: process.env.WEBAPPURL
       })
     );
 
