@@ -46,7 +46,6 @@ const httpTrigger: AzureFunction = async function (
       })
     );
 
-    await target.sendMessage(`[${message.id}]`);
     // Note - you can filter the installations if you don't want to send the event to every installation.
 
     /** For example, if the current target is a "Group" this means that the notification application is

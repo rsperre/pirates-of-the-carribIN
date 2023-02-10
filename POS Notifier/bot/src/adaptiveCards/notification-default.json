@@ -31,6 +31,12 @@
       "type": "Action.OpenUrl",
       "title": "View Details",
       "url": "${notificationUrl}"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Remove alert",
+      "verb": "actionremove"
+      
     }
   ]
 }

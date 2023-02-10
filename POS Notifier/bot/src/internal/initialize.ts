@@ -5,6 +5,7 @@ import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import config from "./config";
 import { DeleteCommandHandler } from "../commandHandlers/deleteCommandHandler";
 import { ClearCommandHandler } from "../commandHandlers/clearCommandHandler";
+import { CardActionHandler } from "../commandHandlers/cardActionHandler";
 
 // Create bot.
 export const bot = new ConversationBot({
@@ -18,6 +19,12 @@ export const bot = new ConversationBot({
   // Enable notification
   notification: {
     enabled: true,
+  },
+  cardAction: {
+    enabled: true,
+    actions: [
+      new CardActionHandler()
+    ]
   },
   command: {
     enabled: true,

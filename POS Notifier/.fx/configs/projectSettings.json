@@ -34,7 +34,7 @@
     ],
     "programmingLanguage": "typescript",
     "solutionSettings": {
-        "name": "pos-fx-azure",
+        "name": "fx-solution-azure",
         "version": "1.0.0",
         "hostType": "Azure",
         "azureResources": [],
