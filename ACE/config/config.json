@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "po-s-control-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/poSControl/PoSControlAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/poSControl/PoSControlAdaptiveCardExtension.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PoSControlAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/poSControl/loc/{locale}.js"
+  }
+}

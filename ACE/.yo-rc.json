@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "ace-po-s",
+    "libraryId": "700c095e-b43d-401e-a84f-4d3b286032d8",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "ACE-PoS",
+    "solutionShortDescription": "ACE-PoS description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Basic"
+  }
+}
