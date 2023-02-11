@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 import BoatInfo from "../BoatInfo/BoatInfo";
+import SendAlert from "../SendAlert/SendAlert";
+import "./BoatList.scss";
 
 const BoatList = () => {
   const [boats, setBoats] = useState<Array<String | Number>>([]);
 
-  // const apiKey = import.meta.env.VITE_AIS_ACCESS_TOKEN;
-
-  // React.useEffect(() => {
-  //   console.log(apiKey);
-  // }, [apiKey]);
+  const date = new Date();
+  const startDate = new Date(date.setHours(date.getHours() - 1));
+  const endDate = new Date();
 
   const handleClick = async () => {
     const res = await fetch(
@@ -22,8 +22,8 @@ const BoatList = () => {
           Authorization: `Bearer ${import.meta.env.VITE_AIS_ACCESS_TOKEN}`,
         },
         body: JSON.stringify({
-          msgtimefrom: "2023-02-09T00:00:00+00:00",
-          msgtimeto: "2023-02-09T23:59:00+00:00",
+          msgtimefrom: `${startDate.toISOString()}`,
+          msgtimeto: `${endDate.toISOString()}`,
           polygon: {
             coordinates: [
               [
@@ -48,12 +48,15 @@ const BoatList = () => {
   };
 
   return (
-    <>
-      <h1>Shipfinder 3000</h1>
+    <div className="boatList">
+      <h1>Pirate tracker 3000</h1>
       <button onClick={handleClick}>Find boats</button>
       <button onClick={removeClickHandler}>Remove boats</button>
+      <div className="boatList__sendAlert">
+        <SendAlert />
+      </div>
       <BoatInfo boats={boats} />
-    </>
+    </div>
   );
 };
 

@@ -12,8 +12,6 @@ type BoatInfoTypes = {
 const BoatList: React.FC<BoatInfoTypes> = ({ boats }) => {
   const [boatDetails, setBoatDetails] = useState<Array<any>>([]);
 
-  // const apiKey = import.meta.env.VITE_AIS_ACCESS_TOKEN;
-
   const boatInfoFetch = async (boats: any) => {
     const res = await fetch(
       "https://live.ais.barentswatch.no/v1/latest/combined",
@@ -42,7 +40,7 @@ const BoatList: React.FC<BoatInfoTypes> = ({ boats }) => {
         <MapContainer
           center={[64.581, 12.601]}
           zoom={5}
-          scrollWheelZoom={false}
+          scrollWheelZoom={true}
           className="BoatInfoMap__container"
         >
           <TileLayer
@@ -50,8 +48,14 @@ const BoatList: React.FC<BoatInfoTypes> = ({ boats }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {boatDetails.length > 0 &&
-            boatDetails.map((b) => {
-              return <BoatMapMarker boat={b} />;
+            boatDetails.map((b, index) => {
+              return (
+                <BoatMapMarker
+                  boat={b}
+                  number={index}
+                  boatAmount={boatDetails.length}
+                />
+              );
             })}
         </MapContainer>
       </div>
