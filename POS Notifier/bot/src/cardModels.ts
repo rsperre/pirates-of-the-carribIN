@@ -7,4 +7,5 @@ export interface CardData {
   appName?: string;
   description: string;
   notificationUrl?: string;
+  coords?: string;
 }

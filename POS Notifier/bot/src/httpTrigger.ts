@@ -33,18 +33,28 @@ const httpTrigger: AzureFunction = async function (
   for (const target of await bot.notification.installations()) {
     const msgBody = req?.rawBody ? `Info: ${req?.rawBody}` : undefined;
     const emoji = emojiarr[Math.floor(Math.random() * emojiarr.length)];
+    const jsonBody:{alert: string, coords: string} = JSON.parse(req?.rawBody);
+
     const description = target.type === 'Channel' ? 
-      `More details to follow in this ${target.type}. ${msgBody}` : 
-      `Hey. There be pirates.... ${emoji} ${req?.rawBody}`
-    
+    `More details to follow in this ${target.type}. ${jsonBody.alert}. Coordinates: ${jsonBody.coords}` : 
+    `Hey. There be pirates.... ${emoji} ${jsonBody.alert}`
+
+    const notUrl = jsonBody?.coords ? `${process.env.WEBAPPURL}?coords=${jsonBody.coords}`: process.env.WEBAPPURL;
+
     const message = await target.sendAdaptiveCard(
       AdaptiveCards.declare<CardData>(notificationTemplate).render({
         title: "Possible pirate activity!",
         appName: "P.o.S Notification",
         description: description,
-        notificationUrl: process.env.WEBAPPURL
+        notificationUrl: notUrl,
+        coords: jsonBody?.coords
       })
     );
+    
+    
+
+    
+    
 
     // Note - you can filter the installations if you don't want to send the event to every installation.
 

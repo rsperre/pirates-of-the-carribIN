@@ -6,6 +6,7 @@ import config from "./config";
 import { DeleteCommandHandler } from "../commandHandlers/deleteCommandHandler";
 import { ClearCommandHandler } from "../commandHandlers/clearCommandHandler";
 import { CardActionHandler } from "../commandHandlers/cardActionHandler";
+import { CheckCommandHandler } from "../commandHandlers/checkActionHandler";
 
 // Create bot.
 export const bot = new ConversationBot({
@@ -32,7 +33,8 @@ export const bot = new ConversationBot({
       new TestCommandHandler(),
       new WhereCommandHandler(),
       new DeleteCommandHandler(),
-      new ClearCommandHandler()
+      new ClearCommandHandler(),
+      new CheckCommandHandler()
     ]
   }
 });
