@@ -1,5 +1,6 @@
-.BoatList {
+.boatList {
   max-width: 100%;
-  //   display: flex;
-  //   gap: 1rem;
+  &__sendAlert {
+    margin-top: 1rem;
+  }
 }
